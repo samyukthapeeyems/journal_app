@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Daily Journal App</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
+
+</head>
+
+<body>
+    <div id="firebaseui-auth-container"></div>
+    <div id="journal-app" style="display: none;">
+        <h2>Daily Journal</h2>
+        <div id="journal-form">
+            <label for="journal-entry">Today's Journal Entry:</label>
+            <textarea id="journal-entry" rows="4" cols="50"></textarea>
+            <button onclick="addJournalEntry()">Save Entry</button>
+        </div>
+        <h3>Your Journal Entries:</h3>
+        <div id="journal-entries"></div>
+
+        <button id="logout-button" onclick="logout()">Logout</button>
+
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
