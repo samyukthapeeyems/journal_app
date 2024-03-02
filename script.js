@@ -23,6 +23,7 @@ function addJournalEntry() {
             .get()
             .then((querySnapshot) => {
                 if (querySnapshot.empty) {
+
                     db.collection("journalEntries").add({
                         text: entryText,
                         userId: user.uid,
@@ -35,6 +36,7 @@ function addJournalEntry() {
                     }).catch((error) => {
                         console.error("Error adding entry: ", error);
                     });
+
                 } else {
                     alert("You have already written a journal entry for today.");
                 }
@@ -88,19 +90,20 @@ var uiConfig = {
     }
 };
 
+
+
+// Initialize the FirebaseUI Widget
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 ui.start('#firebaseui-auth-container', uiConfig);
 
+// Listen for auth state changes
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        // User is signed in
         document.getElementById("journal-app").style.display = "block";
-        document.getElementById("firebaseui-auth-container").style.display = "none"; // Hide the auth container
         displayJournalEntries();
     } else {
-        // User is signed out
         document.getElementById("journal-app").style.display = "none";
-        document.getElementById("firebaseui-auth-container").style.display = "block"; // Show the auth container
     }
 });
+
 
